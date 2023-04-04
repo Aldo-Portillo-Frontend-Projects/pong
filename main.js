@@ -17,6 +17,8 @@ let ballPostition = {
     y: 49
 }
 
+let animationFrameId;
+
 player1.style.transform = `translateY(${player1Position}vh)`
 player2.style.transform = `translateY(${player2Position}vh)`
 
@@ -40,5 +42,19 @@ document.body.addEventListener("keydown", e => {
         player2Position -= 5
         player2.style.transform = `translateY(${player2Position}vh)`
     }
+
+    if(e.key == ' '){
+        requestAnimationFrame(startGame)
+    }
+
+    if(e.key == '4')
+        cancelAnimationFrame(animationFrameId)
     
 })
+
+function startGame (timeStamp) {
+    console.log(timeStamp)
+    animationFrameId  = requestAnimationFrame(startGame)
+}
+
+//

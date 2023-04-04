@@ -46,7 +46,12 @@ document.body.addEventListener("keydown", e => {
     }
 
     if(e.key == ' '){
+        cancelAnimationFrame(animationFrameId)
+
+        ballProps.speedX = 0.75
+        
         requestAnimationFrame(startGame)
+        
     }
 
     if(e.key == '4')
@@ -60,9 +65,12 @@ function startGame (timeStamp) {
     ballProps.y += ballProps.speedY;
     ball.style.transform = `translate( ${ballProps.x}vw, ${ballProps.y}vh)`
 
+    if(ballProps.y >= 100 || ballProps.y <= 0){
+        console.log("oops")
+        ballProps.speedY *=-1
+    }
 
-
-    if(ballProps.x <= 0 && ballProps.y >= player1Position && ballProps.y <= player1Position + 20){
+    if(ballProps.x < 2 && ballProps.y >= player1Position && ballProps.y <= player1Position + 20){
         ballProps.speedX *= -1;
         if(ballProps.y - 9 < player1Position){
             ballProps.speedY = -1 
@@ -72,7 +80,7 @@ function startGame (timeStamp) {
         }
     }
 
-    if(ballProps.x >= 98 && ballProps.y >= player2Position && ballProps.y <= player2Position + 20){
+    if(ballProps.x > 98 && ballProps.y >= player2Position && ballProps.y <= player2Position + 20){
             ballProps.speedX *= -1
             if(ballProps.y - 9 < player2Position){
                 ballProps.speedY = -1 
@@ -80,6 +88,22 @@ function startGame (timeStamp) {
             if(ballProps.y - 9 > player2Position ){
                 ballProps.speedY = 1 
             }
+    }
+
+    if(ballProps.x < 0){
+        console.log("point for player 2") 
+        ballProps.x = 49
+        ballProps.y = 49
+        ballProps.speedX = 0
+        ballProps.speedY = 0
+    }
+
+    if(ballProps.x > 100){
+        console.log("point for player1") 
+        ballProps.x = 49
+        ballProps.y = 49
+        ballProps.speedX = 0
+        ballProps.speedY = 0
     }
 
     animationFrameId  = requestAnimationFrame(startGame)

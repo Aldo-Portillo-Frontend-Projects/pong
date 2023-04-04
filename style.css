@@ -28,4 +28,6 @@ h1{
     width: 2vh;
     background-color: white;
     position: fixed;
+    margin: 0;
+    padding: 0;
 }

@@ -12,9 +12,11 @@ document.body.append(ball)
 
 let player1Position = 40 
 let player2Position = 40 
-let ballPostition = {
+let ballProps = {
     x: 49,
-    y: 49
+    y: 49,
+    speedX: 0.75,
+    speedY: 0,
 }
 
 let animationFrameId;
@@ -22,7 +24,7 @@ let animationFrameId;
 player1.style.transform = `translateY(${player1Position}vh)`
 player2.style.transform = `translateY(${player2Position}vh)`
 
-ball.style.transform = `translate( ${ballPostition.x}vw, ${ballPostition.y}vh)`
+ball.style.transform = `translate( ${ballProps.x}vw, ${ballProps.y}vh)`
 
 document.body.addEventListener("keydown", e => {
     console.log(e.key)
@@ -53,7 +55,14 @@ document.body.addEventListener("keydown", e => {
 })
 
 function startGame (timeStamp) {
-    console.log(timeStamp)
+    
+    ballProps.x += ballProps.speedX;
+    ball.style.transform = `translate( ${ballProps.x}vw, ${ballProps.y}vh)`
+
+    if(ballProps.x >= 98 || ballProps.x <= 0){
+        ballProps.speedX *= -1
+    }
+
     animationFrameId  = requestAnimationFrame(startGame)
 }
 

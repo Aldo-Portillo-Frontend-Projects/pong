@@ -21,8 +21,6 @@ document.body.append(player2PointsHtml )
 const footer = document.getElementById("footer")
 
 
-let player1Position = 40 
-let player2Position = 40 
 let ballProps = {
     x: 49,
     y: 49,
@@ -46,28 +44,27 @@ player2PointsHtml.textContent = player2Info.points
 
 let animationFrameId;
 
-player1.style.transform = `translateY(${player1Position}vh)`
-player2.style.transform = `translateY(${player2Position}vh)`
+player1.style.transform = `translateY(${player1Info.postionY}vh)`
+player2.style.transform = `translateY(${player2Info.postionY}vh)`
 
 ball.style.transform = `translate( ${ballProps.x}vw, ${ballProps.y}vh)`
 
 document.body.addEventListener("keydown", e => {
-    console.log(e.key)
-    if(e.key == 's' && player1Position < 80){ //not strict equal to deal with accidental caps lock
-        player1Position += 5
-        player1.style.transform = `translateY(${player1Position}vh)`
+    if(e.key == 's' && player1Info.postionY < 80){ //not strict equal to deal with accidental caps lock
+        player1Info.postionY += player1Info.speed
+        player1.style.transform = `translateY(${player1Info.postionY}vh)`
     }
-    if(e.key == 'w' && player1Position > 0){
-        player1Position -= 5
-        player1.style.transform = `translateY(${player1Position}vh)`
+    if(e.key == 'w' && player1Info.postionY > 0){
+        player1Info.postionY -= player1Info.speed
+        player1.style.transform = `translateY(${player1Info.postionY}vh)`
     }
-    if(e.key == 'ArrowDown' && player2Position < 80){
-        player2Position += 5
-        player2.style.transform = `translateY(${player2Position}vh)`
+    if(e.key == 'ArrowDown' && player2Info.postionY < 80){
+        player2Info.postionY += player2Info.speed
+        player2.style.transform = `translateY(${player2Info.postionY}vh)`
     }
-    if(e.key == 'ArrowUp' && player2Position > 0){
-        player2Position -= 5
-        player2.style.transform = `translateY(${player2Position}vh)`
+    if(e.key == 'ArrowUp' && player2Info.postionY > 0){
+        player2Info.postionY -= player2Info.speed
+        player2.style.transform = `translateY(${player2Info.postionY}vh)`
     }
 
     if(e.key == ' '){
@@ -79,10 +76,6 @@ document.body.addEventListener("keydown", e => {
         requestAnimationFrame(startGame)
         
     }
-
-    if(e.key == '4')
-        cancelAnimationFrame(animationFrameId)
-    
 })
 
 function startGame (timeStamp) {
@@ -96,22 +89,22 @@ function startGame (timeStamp) {
         ballProps.speedY *=-1
     }
 
-    if(ballProps.x < 2 && ballProps.y >= player1Position && ballProps.y <= player1Position + 20){
+    if(ballProps.x < 2 && ballProps.y >= player1Info.postionY && ballProps.y <= player1Info.postionY + 20){
         ballProps.speedX *= -1;
-        if(ballProps.y - 9 < player1Position){
+        if(ballProps.y - 9 < player1Info.postionY){
             ballProps.speedY = -0.75
         }
-        if(ballProps.y - 9 > player1Position ){
+        if(ballProps.y - 9 > player1Info.postionY ){
             ballProps.speedY = 0.75
         }
     }
 
-    if(ballProps.x > 98 && ballProps.y >= player2Position && ballProps.y <= player2Position + 20){
+    if(ballProps.x > 98 && ballProps.y >= player2Info.postionY && ballProps.y <= player2Info.postionY + 20){
             ballProps.speedX *= -1
-            if(ballProps.y - 9 < player2Position){
+            if(ballProps.y - 9 < player2Info.postionY){
                 ballProps.speedY = -0.75
             }
-            if(ballProps.y - 9 > player2Position ){
+            if(ballProps.y - 9 > player2Info.postionY ){
                 ballProps.speedY = 0.75 
             }
     }

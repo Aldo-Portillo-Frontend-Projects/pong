@@ -7,10 +7,20 @@ h1{
 }
 
 .player1{
-    margin-top: calc(50% - 10vh);
     height: 20vh;
     width: 2vw;
     background-color: white;
+    position: fixed;
+    left: 0%;
     
 }
+
+.player2{
+    height: 20vh;
+    width: 2vw;
+    background-color: white;
+    position: fixed;
+    right: 0%;
+}
+
 

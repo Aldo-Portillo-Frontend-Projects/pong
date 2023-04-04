@@ -14,19 +14,19 @@ player2.style.marginTop = `${player2Position}vh`
 
 document.body.addEventListener("keydown", e => {
     console.log(e.key)
-    if(e.key == 's'){ //not strict equal to deal with accidental caps lock
+    if(e.key == 's' && player1Position < 80){ //not strict equal to deal with accidental caps lock
         player1Position += 5
         player1.style.marginTop = `${player1Position}vh`
     }
-    if(e.key == 'w'){
+    if(e.key == 'w' && player1Position > 0){
         player1Position -= 5
         player1.style.marginTop = `${player1Position}vh`
     }
-    if(e.key == 'ArrowDown'){
+    if(e.key == 'ArrowDown' && player2Position < 80){
         player2Position += 5
         player2.style.marginTop = `${player2Position}vh`
     }
-    if(e.key == 'ArrowUp'){
+    if(e.key == 'ArrowUp' && player2Position > 0){
         player2Position -= 5
         player2.style.marginTop = `${player2Position}vh`
     }

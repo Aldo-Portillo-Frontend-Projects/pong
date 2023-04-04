@@ -1,10 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,600;1,300&display=swap');
+html{
+    height: 0;
+}
 body{
     background-color: black;
     margin: 0;
+    font-family: 'Rubik', sans-serif;
 }
 
 h1{
     color: white;
+}
+
+.player-1-points{
+    color: white;
+    position: fixed;
+    left: 45%;
+    top: 0;
+    margin: 0;
+}
+.player-2-points{
+    color: white;
+    position: fixed;
+    right: 45%;
+    top: 0;
+    margin: 0;
 }
 
 .player1{

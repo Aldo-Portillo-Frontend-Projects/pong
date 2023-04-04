@@ -60,22 +60,26 @@ function startGame (timeStamp) {
     ballProps.y += ballProps.speedY;
     ball.style.transform = `translate( ${ballProps.x}vw, ${ballProps.y}vh)`
 
-    if(ballProps.x <= 0){
-        
-        if(ballProps.y >= player1Position && ballProps.y <= player1Position + 20){
-            ballProps.speedX *= -1  
-            console.log("hit")
+
+
+    if(ballProps.x <= 0 && ballProps.y >= player1Position && ballProps.y <= player1Position + 20){
+        ballProps.speedX *= -1;
+        if(ballProps.y - 9 < player1Position){
+            ballProps.speedY = -1 
+        }
+        if(ballProps.y - 9 > player1Position ){
+            ballProps.speedY = 1 
         }
     }
 
-    if(ballProps.x >= 98 ){
-          
-        if(ballProps.y >= player2Position && ballProps.y <= player2Position + 20){
+    if(ballProps.x >= 98 && ballProps.y >= player2Position && ballProps.y <= player2Position + 20){
             ballProps.speedX *= -1
-            if(ballProps.y > player2Position +7){
+            if(ballProps.y - 9 < player2Position){
                 ballProps.speedY = -1 
             }
-        }
+            if(ballProps.y - 9 > player2Position ){
+                ballProps.speedY = 1 
+            }
     }
 
     animationFrameId  = requestAnimationFrame(startGame)

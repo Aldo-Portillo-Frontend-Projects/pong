@@ -10,6 +10,15 @@ const ball = document.createElement('div');
 ball.classList.add("ball")
 document.body.append(ball)
 
+const player1PointsHtml = document.createElement('h2')
+player1PointsHtml.classList.add("player-1-points")
+document.body.append(player1PointsHtml)
+
+const player2PointsHtml = document.createElement('h2')
+player2PointsHtml.classList.add("player-2-points")
+document.body.append(player2PointsHtml )
+
+
 let player1Position = 40 
 let player2Position = 40 
 let ballProps = {
@@ -18,6 +27,20 @@ let ballProps = {
     speedX: 0.75,
     speedY: 0,
 }
+
+const player1Info = {
+    postionY: 40,
+    points: 0,
+    speed: 5,
+}
+player1PointsHtml.textContent = player1Info.points 
+
+const player2Info = {
+    postionY: 40,
+    points: 0,
+    speed: 5,
+}
+player2PointsHtml.textContent = player2Info.points 
 
 let animationFrameId;
 
@@ -91,19 +114,21 @@ function startGame (timeStamp) {
     }
 
     if(ballProps.x < 0){
-        console.log("point for player 2") 
         ballProps.x = 49
         ballProps.y = 49
         ballProps.speedX = 0
         ballProps.speedY = 0
+        player2Info.points += 1;
+        player2PointsHtml.textContent = player2Info.points 
     }
 
     if(ballProps.x > 100){
-        console.log("point for player1") 
         ballProps.x = 49
         ballProps.y = 49
         ballProps.speedX = 0
         ballProps.speedY = 0
+        player1Info.points += 1;
+        player1PointsHtml.textContent = player1Info.points 
     }
 
     animationFrameId  = requestAnimationFrame(startGame)

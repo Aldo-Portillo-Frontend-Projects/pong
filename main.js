@@ -18,6 +18,8 @@ const player2PointsHtml = document.createElement('h2')
 player2PointsHtml.classList.add("player-2-points")
 document.body.append(player2PointsHtml )
 
+const footer = document.getElementById("footer")
+
 
 let player1Position = 40 
 let player2Position = 40 
@@ -71,6 +73,7 @@ document.body.addEventListener("keydown", e => {
     if(e.key == ' '){
         cancelAnimationFrame(animationFrameId)
 
+        footer.textContent = "Follow me on Github"
         ballProps.speedX = 0.75
         
         requestAnimationFrame(startGame)

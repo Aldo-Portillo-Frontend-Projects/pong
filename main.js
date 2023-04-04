@@ -96,20 +96,20 @@ function startGame (timeStamp) {
     if(ballProps.x < 2 && ballProps.y >= player1Position && ballProps.y <= player1Position + 20){
         ballProps.speedX *= -1;
         if(ballProps.y - 9 < player1Position){
-            ballProps.speedY = -1 
+            ballProps.speedY = -0.75
         }
         if(ballProps.y - 9 > player1Position ){
-            ballProps.speedY = 1 
+            ballProps.speedY = 0.75
         }
     }
 
     if(ballProps.x > 98 && ballProps.y >= player2Position && ballProps.y <= player2Position + 20){
             ballProps.speedX *= -1
             if(ballProps.y - 9 < player2Position){
-                ballProps.speedY = -1 
+                ballProps.speedY = -0.75
             }
             if(ballProps.y - 9 > player2Position ){
-                ballProps.speedY = 1 
+                ballProps.speedY = 0.75 
             }
     }
 

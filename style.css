@@ -1,0 +1,16 @@
+body{
+    background-color: black;
+}
+
+h1{
+    color: white;
+}
+
+.player1{
+    margin-top: calc(50% - 10vh);
+    height: 20vh;
+    width: 2vw;
+    background-color: white;
+    
+}
+
